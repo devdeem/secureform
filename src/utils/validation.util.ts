@@ -4,17 +4,17 @@ import { z } from "zod";
 const emailSchema = z
 	.string()
 	.trim()
-	.nonempty({ message: "E-mail Address field is empty" })
-	.email({ message: "E-mail Address is not valid format" })
-	.min(5, { message: "E-mail Address is less than 6 characters long" })
-	.max(254, { message: "E-mail Address is more than 254 characters long" });
+	.nonempty({ message: "E-mail field cannot be empty" })
+	.email({ message: "E-mail is not valid format" })
+	.min(6, { message: "E-mail is less than 6 characters long" })
+	.max(254, { message: "E-mail is more than 254 characters long" });
 
 // Define schema for password validation
 const passwordSchema = z
 	.string()
-	.nonempty({ message: "Password field is empty" })
-	.min(8, { message: "Password is less than 8 characters long" })
-	.max(128, { message: "Password is more than 128 characters long" })
+	.nonempty({ message: "Password field cannot be empty" })
+	.min(8, { message: "Password cannot be less than 8 characters long" })
+	.max(128, { message: "Password cannot be more than 128 characters long" })
 	.regex(/[A-Z]/, { message: "Password does not contain any uppercase letter" })
 	.regex(/[a-z]/, { message: "Password does not contain any lowercase letter" })
 	.regex(/[0-9]/, { message: "Password does not contain any number" })
@@ -24,7 +24,7 @@ const passwordSchema = z
 export function validateEmail(email: string) {
 	const result = emailSchema.safeParse(email);
 
-	if (!result.success) {
+	if (!result?.success) {
 		const firstError = Object.values(result?.error?.format())[0][0];
 
 		return { success: false, error: firstError };
@@ -37,7 +37,7 @@ export function validateEmail(email: string) {
 export function validatePassword(password: string) {
 	const result = passwordSchema.safeParse(password);
 
-	if (!result.success) {
+	if (!result?.success) {
 		const firstError = Object.values(result?.error?.format())[0][0];
 
 		return { success: false, error: firstError };
