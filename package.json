@@ -1,0 +1,39 @@
+{
+	"version": "1.0.1",
+	"name": "secureform",
+	"description": "Fast REST API for validating FormData using Fastify and TypeScript.",
+	"main": "src/server.ts",
+	"scripts": {
+		"dev": "tsx src/server.ts",
+		"format:check": "prettier --check .",
+		"format:write": "prettier --write ."
+	},
+	"dependencies": {
+		"@fastify/rate-limit": "^10.2.2",
+		"dotenv": "^16.4.7",
+		"fastify": "^5.2.1",
+		"zod": "^3.24.2"
+	},
+	"devDependencies": {
+		"@types/node": "^22.13.10",
+		"prettier": "^3.5.3",
+		"tsx": "^4.19.3",
+		"typescript": "^5.8.2"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/devdeem/secureform.git"
+	},
+	"bugs": {
+		"url": "https://github.com/devdeem/secureform/issues"
+	},
+	"keywords": [
+		"rest-api",
+		"validator",
+		"form-validation",
+		"validation",
+		"api"
+	],
+	"author": "Alexandr Virgovič",
+	"license": "Apache-2.0"
+}
