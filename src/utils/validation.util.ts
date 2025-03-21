@@ -67,3 +67,25 @@ export function validateFirstName(firstName: string) {
 
 	return { success: true };
 }
+
+// Define schema for last name validation
+const lastNameSchema = z
+	.string()
+	.trim()
+	.nonempty({ message: "Last name field cannot be empty" })
+	.min(2, { message: "Last name cannot be less than 2 characters long" })
+	.max(50, { message: "Last name cannot be more than 50 characters long" })
+	.regex(/^[a-zA-Z]+$/, { message: "Last name cannot contain any special characters or numbers" });
+
+// Function to validate last name data
+export function validateLastName(lastName: string) {
+	const result = lastNameSchema.safeParse(lastName);
+
+	if (!result?.success) {
+		const firstError = Object.values(result?.error?.format())[0][0];
+
+		return { success: false, error: firstError };
+	}
+
+	return { success: true };
+}
