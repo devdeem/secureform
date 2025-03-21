@@ -11,5 +11,11 @@ Fast REST API for validating FormData using Fastify and TypeScript 🚀
 ## Usage
 Usage of the API will be added soon...
 
+## What can I validate?
+- FirstName
+- LastName
+- E-mail Address
+- Password
+
 ## License
 This project is licensed under the [Apache License 2.0](https://github.com/devdeem/secureform/blob/main/LICENSE).
